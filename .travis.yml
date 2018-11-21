@@ -9,10 +9,10 @@ script:
   - docker run alepoletto/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t alepoletto/multi-client -f  ./client
-  - docker build -t alepoletto/multi-nginx -f  ./nginx
-  - docker build -t alepoletto/multi-server -f  ./server
-  - docker build -t alepoletto/multi-worker -f  ./worker
+  - docker build -t alepoletto/multi-client ./client
+  - docker build -t alepoletto/multi-nginx ./nginx
+  - docker build -t alepoletto/multi-server ./server
+  - docker build -t alepoletto/multi-worker ./worker
   #log to docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push them to docker hub
